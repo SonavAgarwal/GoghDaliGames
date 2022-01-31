@@ -1,13 +1,256 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@import url("https://fonts.googleapis.com/css2?family=Mouse+Memoirs&family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&display=swap");
+
+:root {
+    --primary: black;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+* {
+    font-family: "Open Sans", sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: "Mouse Memoirs", sans-serif;
+}
+
+h1 {
+    font-size: 3rem;
+}
+
+img {
+    width: min(80%, 20rem);
+}
+
+button {
+    border: 0.5rem solid var(--primary);
+    width: min(80%, 20rem);
+    font-size: 2rem;
+    font-weight: bold;
+    font-family: "Mouse Memoirs", sans-serif;
+    text-transform: uppercase;
+    transition: transform 0.1s ease;
+}
+
+button:hover {
+    transform: scale(1.1);
+    /* animation: shake 0.1s 2; */
+}
+
+button:active {
+    transform: scale(0.9);
+    /* animation: shake 0.1s 2; */
+}
+
+@keyframes shake {
+    0% {
+        transform: translateX(0);
+    }
+    50% {
+        transform: translateX(0.5rem);
+    }
+    100% {
+        transform: translateX(-0.5rem);
+    }
+}
+
+input {
+    border: 0.5rem solid var(--primary);
+    width: min(80%, 20rem);
+    font-size: 1.5rem;
+    font-weight: bold;
+    font-family: "Mouse Memoirs", sans-serif;
+    transition: transform 0.1s ease;
+    box-sizing: border-box;
+    padding: 0.25rem;
+    text-align: center;
+}
+
+input:focus,
+input:hover {
+    transform: scale(1.1);
+    /* animation: shake 0.1s 2; */
+}
+
+.column-page {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.margin-bottom {
+    margin-bottom: 1rem;
+}
+
+.margin-top {
+    margin-top: 1rem;
+}
+
+/* FIREBALL STYLES */
+
+.trifold-page {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: row;
+    transition: all 0.2s ease;
+
+    position: relative;
+    cursor: none;
+
+    overflow: hidden;
+    z-index: 2;
+}
+
+.trifold-page-outline {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    transition: all 0.2s ease;
+    z-index: 100;
+    pointer-events: none;
+}
+
+.trifold-page-pulse {
+    box-shadow: 0px 0px 0rem 0.5rem var(--primary) inset;
+}
+
+.trifold-section-wrapper {
+    height: 100%;
+    flex: 1;
+    overflow: hidden;
+    position: relative;
+}
+.trifold-section {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.2s ease;
+    flex-direction: column;
+
+    box-sizing: border-box;
+    border: 0;
+
+    overflow: hidden;
+}
+
+.trifold-section:hover {
+    /* border: 0.5rem solid black; */
+    /* box-shadow: 0px 0px 0rem 0.5rem black inset; */
+}
+
+.trifold-section > img {
+    transition: transform 0.2s ease;
+    transform: scale(1);
+    pointer-events: none;
+    user-select: none;
+}
+.trifold-section:hover > img {
+    transform: scale(2);
+}
+
+.trifold-section > h1 {
+    transform: translate(0, 5rem);
+}
+
+.shoot-section:hover {
+    /* background-image: linear-gradient(white, orange, crimson); */
+    background-color: crimson;
+}
+.reload-section:hover {
+    background-color: gold;
+}
+.block-section:hover {
+    background-color: sienna;
+}
+
+.custom-cursor {
+    /* width: 3rem;
+    height: 3rem; */
+    transform: translate(-50%, -50%);
+    position: absolute;
+    z-index: 1000;
+    transition: all 0.1s ease;
+    border: 0.5rem solid var(--primary);
+    pointer-events: none;
+    border-radius: 100%;
+}
+
+.custom-cursor-pulse {
+    /* box-shadow: 0px 0px 0rem 1rem var(--primary) inset; */
+}
+
+.fb-particles {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 0.1s ease;
+    pointer-events: none;
+}
+
+.trifold-section:hover > .fb-particles {
+    opacity: 1;
+}
+
+.ReactModal__Body--open {
+    overflow: hidden;
+}
+
+.ReactModal__Overlay {
+    z-index: 5;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    background-color: transparent !important;
+    transition: all 0.2s ease;
+    opacity: 0;
+    box-sizing: border-box;
+    padding: 5rem;
+    pointer-events: none;
+}
+
+.ReactModal__Content {
+    border: 0.5rem solid var(--primary) !important;
+    border-radius: 0 !important;
+    padding: 0 !important;
+    /* height: auto !important; */
+    position: relative !important;
+    inset: 0px !important;
+}
+
+.ReactModal__Overlay--after-open {
+    opacity: 1;
+}
+
+.ReactModal__Overlay--before-close {
+    opacity: 0;
+}
+
+.modal-content {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+.turn-result-image {
+    justify-content: center;
+    align-items: center;
+    flex: 1;
+    display: flex;
+}
+
+.modal-content-outer > h1 {
+    margin-top: 1rem;
+    text-align: center;
 }
